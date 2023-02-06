@@ -14,20 +14,11 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderPageTest {
+public class OrderPageTest extends BaseTest {
 
-    WebDriver driver;
-    // driver для запуска теста на firefox
-    WebDriver ffdriver;
     @Before
     public void before() {
-        WebDriverManager.chromedriver().setup();
-        //WebDriverManager.firefoxdriver().setup();
-        //ffdriver = new FirefoxDriver();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //ffdriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-
+        super.before();
     }
     private final String name;
     private final String surname;
@@ -126,10 +117,6 @@ public class OrderPageTest {
         boolean isVisible = orderPage.isYesButtonIsVisible();
         assertTrue(isVisible);
 
-    }
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }
 
